@@ -12,7 +12,7 @@
 <rfc ipr="trust200902" category="std" docName="draft-holmberg-ice-pac-latest" obsoletes="" updates="8445" submissionType="IETF" xml:lang="en">
   <front>
     <title abbrev="ICE Premature">
-      Interactive Connectivity Establishment Patiently Awaiting Candidates (ICE PAC)
+      Interactive Connectivity Establishment Patiently Awaiting Connectivity (ICE PAC)
     </title>
     <author initials="C.H." surname="Holmberg" fullname="Christer Holmberg">
       <organization>Ericsson</organization>
