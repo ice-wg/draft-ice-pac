@@ -9,7 +9,7 @@
 <?rfc subcompact="yes" ?>
 <?rfc sortrefs="no" ?>
 <?rfc strict="yes" ?>
-<rfc ipr="trust200902" category="std" docName="draft-ietf-ice-pac-00" obsoletes="" updates="8445" submissionType="IETF" xml:lang="en">
+<rfc ipr="trust200902" category="std" docName="draft-ietf-ice-pac-latest" obsoletes="" updates="8445" submissionType="IETF" xml:lang="en">
   <front>
     <title abbrev="ICE PAC">
       Interactive Connectivity Establishment Patiently Awaiting Connectivity (ICE PAC)
