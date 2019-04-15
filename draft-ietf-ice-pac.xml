@@ -116,10 +116,10 @@
           candidates are very likely to result in a valid pair.
         </t>
         <t>
-          In most ICE scenarios, the lengthy timeouts for connectivity checks,
-          typically tens of seconds, will prevent this problem for occuring.
-          However, there are certain specific cases where this problem will
-          frequently occur.
+          In most ICE scenarios, the lengthy transaction timeouts for connectivity check
+          Binding requests, typically tens of seconds, will prevent 
+          this problem for occuring. However, there are certain specific cases 
+          where this problem will frequently occur.
         </t>
         <section title="No Candidates From Peer">
           <t>
@@ -156,12 +156,12 @@
           <t>
             Section 7.2.5.2 of <xref target="RFC8445"></xref> describes several
             situations in which a candidate pair will be considered to have
-            failed, well before the connectivity check timeout.
+            failed, well before the connectivity check Binding request transaction timeout.
           </t>
           <t>
             As a result, even if the ICE agent provides usable candidates,
             the pairs created by the remote endpoint may fail immediately when
-            checked, e.g., a check to a nonroutable address that receives an
+            checked, e.g., a check to a non-routable address that receives an
             immediate ICMP error.
           </t>
           <t>
@@ -178,7 +178,7 @@
         discovered. Accordingly, when full ICE implementations begin their
         ICE processing, as described in <xref target="RFC8445" />, Section
         6.1, the ICE agent MUST set a timer, and its duration SHOULD be
-        equal to the ICE agent's connectivity check timeout.
+        equal to the ICE agent's Binding request transaction timeout.
       </t>
       <t>
         This timeout value is chosen to roughly coincide with the maximum
