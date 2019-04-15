@@ -66,7 +66,7 @@
         for Network Address Translator (NAT) traversal for UDP-based communication.
       </t>
       <t>
-        Typically, when using ICE, ICE agent will exchange candidate addresses,
+        Typically, when using ICE, ICE agents will exchange candidate addresses,
         form a list of candidate pairs, and then test each candidate pair to see
         if connectivity can be established. If the test for a given pair fails,
         it is marked accordingly, and if all pairs have failed, the overall
