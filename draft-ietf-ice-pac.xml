@@ -117,13 +117,13 @@
         </t>
         <t>
           In most ICE scenarios, the lengthy timeouts for connectivity checks,
-          typically tens of seconds, will prevent this problem for occuring.
+          typically tens of seconds, will prevent this problem from occurring.
           However, there are certain specific cases where this problem will
           frequently occur.
         </t>
         <section title="No Candidates From Peer">
           <t>
-            It is entirely legal for an ICE gent to provide zero candidates of
+            It is entirely legal for an ICE agent to provide zero candidates of
             its own. If the agent somehow knows that the remote endpoint is
             directly reachable, gathering local candidates is unnecessary and
             will only cause delays; the remote endpoint can discover the
