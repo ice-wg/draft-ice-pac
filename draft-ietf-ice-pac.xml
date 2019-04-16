@@ -116,7 +116,6 @@
           candidates are very likely to result in a valid pair.
         </t>
         <t>
-        the lengthy timeouts for connectivity checks
           In most ICE scenarios, the lengthy timeouts for connectivity check transactions,
           typically tens of seconds, will prevent this problem for occuring. However, there
           are certain specific cases where this problem will frequently occur.
