@@ -117,7 +117,7 @@
         </t>
         <t>
           In most ICE scenarios, the lengthy timeouts for connectivity check transactions,
-          typically tens of seconds, will prevent this problem for occuring. However, there
+          typically tens of seconds, will prevent this problem from occuring. However, there
           are certain specific cases where this problem will frequently occur.
         </t>
         <section title="No Candidates From Peer">
