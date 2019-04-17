@@ -116,16 +116,9 @@
           candidates are very likely to result in a valid pair.
         </t>
         <t>
-<<<<<<< HEAD
           In most ICE scenarios, the lengthy timeouts for connectivity check transactions,
           typically tens of seconds, will prevent this problem from occuring. However, there
           are certain specific cases where this problem will frequently occur.
-=======
-          In most ICE scenarios, the lengthy timeouts for connectivity checks,
-          typically tens of seconds, will prevent this problem from occurring.
-          However, there are certain specific cases where this problem will
-          frequently occur.
->>>>>>> parent of 60d5f0a... Merge pull request #4 from cdh4u/transaction-timeout
         </t>
         <section title="No Candidates From Peer">
           <t>
