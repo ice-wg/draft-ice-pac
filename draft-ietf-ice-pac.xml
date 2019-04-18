@@ -48,10 +48,10 @@
     <abstract>
       <t>
         During the process of creating a peer-to-peer connection,
-        ICE implementations can encounter situations where they have
+        ICE agents can encounter situations where they have
         no candidate pairs to check, and, as a result, conclude that
         ICE processing has failed. However, because additional
-        candidate pairs can be discovered during ICE processing, 
+        candidate pairs can be discovered during ICE processing,
         declaring failure at this point may be premature. This
         document discusses when these situations can occur and
         proposes a way to avoid premature failure.
@@ -86,7 +86,7 @@
       </t>
       <t>
         This specification updates <xref target="RFC8445"></xref>, by simply
-        requiring that an endpoint wait a minimum amount of time before
+        requiring that an ICE agent wait a minimum amount of time before
         declaring ICE failure, even if there are no candidate pairs to check,
         or if all candidate pairs have failed. This delay provides enough time
         for the discovery of peer-reflexive candidates, which may eventually
@@ -117,7 +117,7 @@
         </t>
         <t>
           In most ICE scenarios, the lengthy timeouts for connectivity check transactions,
-          typically tens of seconds, will prevent this problem from occuring. However, there
+          typically tens of seconds, will prevent this problem from occurring. However, there
           are certain specific cases where this problem will frequently occur.
         </t>
         <section title="No Candidates From Peer">
@@ -125,29 +125,29 @@
             It is entirely legal for an ICE agent to provide zero candidates of
             its own. If the agent somehow knows that the remote endpoint is
             directly reachable, gathering local candidates is unnecessary and
-            will only cause delays; the remote endpoint can discover the
+            will only cause delays; the peer agent can discover the
             appropriate local candidate via connectivity checks.
           </t>
           <t>
             However, following the procedures from
             <xref target="RFC8445"></xref> strictly will result in immediate
-            ICE failure, since the checklist at the remote endpoint will be
+            ICE failure, since the checklist at the peer agent will be
             empty.
           </t>
         </section>
         <section title="All Candidates Discarded">
           <t>
             Even if the ICE agent provides candidates, they may be discarded
-            by the remote endpoint if it does not know what to do with them.
-            For example, candidates may use an address family that the remote
-            endpoint does not support, (e.g., a host candidate with an IPv6
+            by the peer agent if it does not know what to do with them.
+            For example, candidates may use an address family that the peer
+            agent does not support, (e.g., a host candidate with an IPv6
             address in a NAT64 scenario), or may not be usable for some other
             reason (e.g., a candidate that contains a FQDN that fails to
             resolve).
           </t>
           <t>
             In these scenarios, when the candidates are discarded, the
-            checklist at the remote endpoint will once again be empty, leading
+            checklist at the peer agent will once again be empty, leading
             to immediate ICE failure.
           </t>
         </section>
@@ -155,16 +155,16 @@
           <t>
             Section 7.2.5.2 of <xref target="RFC8445"></xref> describes several
             situations in which a candidate pair will be considered to have
-            failed, well before the connectivity check timeout.
+            failed, well before the connectivity check transaction timeout.
           </t>
           <t>
             As a result, even if the ICE agent provides usable candidates,
-            the pairs created by the remote endpoint may fail immediately when
-            checked, e.g., a check to a nonroutable address that receives an
+            the pairs created by the peer agent may fail immediately when
+            checked, e.g., a check to a non-routable address that receives an
             immediate ICMP error.
           </t>
           <t>
-            In this situation, the checklist at the remote endpoint may contain
+            In this situation, the checklist at the peer agent may contain
             only failed pairs, resulting in immediate ICE failure.
           </t>
         </section>
@@ -174,10 +174,10 @@
       <t>
         In order to avoid the problem raised by this document, the ICE agent
         needs to wait enough time to allow peer-reflexive candidates to be
-        discovered. Accordingly, when full ICE implementations begin their
+        discovered. Accordingly, when a full ICE implementation begins its
         ICE processing, as described in <xref target="RFC8445" />, Section
-        6.1, the ICE agent MUST set a timer, and its duration SHOULD be
-        equal to the ICE agent's connectivity check timeout.
+        6.1, it MUST set a timer, and its duration SHOULD be
+        equal to the agent's connectivity check transaction timeout.
       </t>
       <t>
         This timeout value is chosen to roughly coincide with the maximum
@@ -186,7 +186,7 @@
         the ICE agent doesn't know the exact number of candidate pairs and pacing
         interval in use by the remote side, this timeout value is simply a
         guess, albeit an educated one. Regardless, for this particular problem,
-        the desired benefits will be realized as long as the ICE agent waits
+        the desired benefits will be realized as long as the agent waits
         some reasonable amount of time.
       </t>
       <t>
@@ -209,7 +209,7 @@
     <section anchor="section.sec" title="Security Considerations">
       <t>
         The security considerations for ICE are defined in <xref target="RFC8445" pageno="false" format="default"/>.
-        This specification only recommends ICE endpoints to wait for a certain time of period before they declare
+        This specification only recommends that ICE agents wait for a certain time of period before they declare
         ICE failure, and does not introduce new security considerations.
       </t>
     </section>
