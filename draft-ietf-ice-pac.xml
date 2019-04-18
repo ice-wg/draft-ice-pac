@@ -66,7 +66,7 @@
         for Network Address Translator (NAT) traversal for UDP-based communication.
       </t>
       <t>
-        Typically, when using ICE, ICE agents will exchange candidate addresses,
+        Typically, when using ICE, endpoints will exchange candidate addresses,
         form a list of candidate pairs, and then test each candidate pair to see
         if connectivity can be established. If the test for a given pair fails,
         it is marked accordingly, and if all pairs have failed, the overall
@@ -74,19 +74,19 @@
       </t>
       <t>
         During the process of connectivity checks, additional candidates may
-        be created as a result of successful inbound checks from the
-        peer agent. Such candidates are referred to as peer-reflexive candidates,
+        be created as a result of successful inbound checks from the remote
+        peer. Such candidates are referred to as peer-reflexive candidates,
         and once discovered, will be used to form new candidate pairs which will
         be tested like any other. However, there is an inherent race condition
         here; if, before learning about any peer-reflexive candidates, an
-        agent runs out of candidate pairs to check, either because it has
+        endpoint runs out of candidate pairs to check, either because it has
         none, or it considers them all to have failed, it will prematurely
         declare failure and terminate ICE processing. This race condition can
         occur in many common situations.
       </t>
       <t>
         This specification updates <xref target="RFC8445"></xref>, by simply
-        requiring that an agent wait a minimum amount of time before
+        requiring that an ICE agent wait a minimum amount of time before
         declaring ICE failure, even if there are no candidate pairs to check,
         or if all candidate pairs have failed. This delay provides enough time
         for the discovery of peer-reflexive candidates, which may eventually
@@ -117,13 +117,13 @@
         </t>
         <t>
           In most ICE scenarios, the lengthy timeouts for connectivity check transactions,
-          typically tens of seconds, will prevent this problem for occuring. However, there
+          typically tens of seconds, will prevent this problem from occurring. However, there
           are certain specific cases where this problem will frequently occur.
         </t>
         <section title="No Candidates From Peer">
           <t>
             It is entirely legal for an ICE agent to provide zero candidates of
-            its own. If the agent somehow knows that the peer agent is
+            its own. If the agent somehow knows that the remote endpoint is
             directly reachable, gathering local candidates is unnecessary and
             will only cause delays; the peer agent can discover the
             appropriate local candidate via connectivity checks.
@@ -174,24 +174,24 @@
       <t>
         In order to avoid the problem raised by this document, the ICE agent
         needs to wait enough time to allow peer-reflexive candidates to be
-        discovered. Accordingly, when full ICE implementations begin their
+        discovered. Accordingly, when a full ICE implementation begins its
         ICE processing, as described in <xref target="RFC8445" />, Section
-        6.1, the agent MUST set a timer, and its duration SHOULD be
+        6.1, it MUST set a timer, and its duration SHOULD be
         equal to the agent's connectivity check transaction timeout.
       </t>
       <t>
         This timeout value is chosen to roughly coincide with the maximum
-        possible duration of ICE connectivity checks from the peer agent,
+        possible duration of ICE connectivity checks from the remote peer,
         which, if successful, could create peer-reflexive candidates. Because
-        the agent doesn't know the exact number of candidate pairs and pacing
-        interval in use by the peer agent, this timeout value is simply a
+        the ICE agent doesn't know the exact number of candidate pairs and pacing
+        interval in use by the remote side, this timeout value is simply a
         guess, albeit an educated one. Regardless, for this particular problem,
         the desired benefits will be realized as long as the agent waits
         some reasonable amount of time.
       </t>
       <t>
         While the timer is running, if a checklist has no pairs left to check,
-        i.e., there are no pairs that are not in the failed state, the
+        i.e., there are no pairs that are not in the failed state, the ICE
         agent MUST not conclude that ICE processing has failed, and MUST wait
         for the timer to elapse before doing so.
       </t>
@@ -209,7 +209,7 @@
     <section anchor="section.sec" title="Security Considerations">
       <t>
         The security considerations for ICE are defined in <xref target="RFC8445" pageno="false" format="default"/>.
-        This specification only recommends ICE agents to wait for a certain time of period before they declare
+        This specification only recommends that ICE agents wait for a certain time of period before they declare
         ICE failure, and does not introduce new security considerations.
       </t>
     </section>
