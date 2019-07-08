@@ -180,7 +180,17 @@
         equal to the agent's connectivity check transaction timeout.
       </t>
       <t>
-        This timeout value is chosen to roughly coincide with the maximum
+        Specifically, the ICE agent will start its timer once it is ready to
+        send and receive ICE connectivity checks. This occurs when the agent has
+        sent and received the values needed to perform connectivity checks
+        (e.g., the Username Fragment and Password denoted in
+        <xref target="RFC8445" />, Section 5.3), and has sent at least one ICE
+        candidate. This ensures that the timer is only started once the remote
+        peer is actively trying to connect (i.e., to the ICE candidates that
+        were sent).
+      </t>
+      <t>
+        The timeout value mentioned above is chosen to roughly coincide with the maximum
         possible duration of ICE connectivity checks from the remote peer,
         which, if successful, could create peer-reflexive candidates. Because
         the ICE agent doesn't know the exact number of candidate pairs and pacing
