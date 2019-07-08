@@ -184,8 +184,8 @@
         and defines new procedures associated with the timer for full ICE implementations.
       </t>
       <t>
-        A full ICE implementation starts timer Tpac once it has sent its set of local candidates
-        to the remote peer, as described in Section 5 of <xref target="RFC8445" 
+        A full ICE implementation starts timer Tpac once it has received the set of remote candidates from
+        the remote peer and has sent back its set of local candidates, as described in Section 5 of <xref target="RFC8445" 
         pageno="false" format="default"/>.
       </t>
       <t>
