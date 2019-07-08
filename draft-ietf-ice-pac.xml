@@ -66,31 +66,38 @@
         for Network Address Translator (NAT) traversal for UDP-based communication.
       </t>
       <t>
-        Typically, when using ICE, endpoints will exchange candidate addresses,
-        form a list of candidate pairs, and then test each candidate pair to see
-        if connectivity can be established. If the test for a given pair fails,
-        it is marked accordingly, and if all pairs have failed, the overall
-        ICE process is considered to have failed.
+        When using ICE, endpoints will exchange candidiates, form one or more
+        lists (checklists) of candidate pairs, and then test the pairs to
+        determine whether connectivity can be established. There is a checklist
+        for each data stream associated with the session. If connectivity for
+        a data stream cannot be established, the state of the checklist associated
+        with the data stream is set to Failed. Once the state of all checklists
+        have been set to Failed, the ICE agent sets the state of the ICE session
+        to Failed. Based on local policy, the ICE agent can also set the state of 
+        the ICE session to Failed even if the state of only some of the checklists
+        have been set to Failed.
       </t>
       <t>
-        During the process of connectivity checks, additional candidates may
-        be created as a result of successful inbound checks from the remote
-        peer. Such candidates are referred to as peer-reflexive candidates,
-        and once discovered, will be used to form new candidate pairs which will
-        be tested like any other. However, there is an inherent race condition
-        here; if, before learning about any peer-reflexive candidates, an
-        endpoint runs out of candidate pairs to check, either because it has
-        none, or it considers them all to have failed, it will prematurely
-        declare failure and terminate ICE processing. This race condition can
-        occur in many common situations.
+        While candidate pairs are tested, additional candidates, referred to as
+        peer-reflexive candidates, might be created as a result of successful
+        inbound ICE connectitivy checks received from the remote peer. Such
+        candidates will be used to form new candidate pairs that will be tested
+        like any other candidate pair.
       </t>
       <t>
-        This specification updates <xref target="RFC8445"></xref>, by simply
-        requiring that an ICE agent wait a minimum amount of time before
-        declaring ICE failure, even if there are no candidate pairs to check,
-        or if all candidate pairs have failed. This delay provides enough time
-        for the discovery of peer-reflexive candidates, which may eventually
-        lead to ICE processing completing successfully.
+        However, there is an inherent race condition here; if, before learning about 
+        any peer-reflexive candidates, an endpoint runs out of candidate pairs to check, 
+        either because it has none, or it considers them all to have failed, the agent might 
+        prematurely declare ICE failure and terminate the ICE processing. This race condition
+        can occur in many common situations.
+      </t>
+      <t>
+        This specification updates <xref target="RFC8445"></xref>, by defining
+        a minimum duration for the ICE processing, and a new timer, Tpac. The tiemout
+        value of timer Tpac will be equal to the minimum duration for the ICE processing.
+        An ICE agent will not declare ICE failure while timer Tpac is still running.
+        This will provide extra time for the discovery of peer-reflexive candidates, 
+        that might eventually lead to ICE processing completing successfully.
       </t>
     </section>
 
@@ -172,37 +179,41 @@
 
     <section title="Update to RFC 8445">
       <t>
-        In order to avoid the problem raised by this document, the ICE agent
-        needs to wait enough time to allow peer-reflexive candidates to be
-        discovered. Accordingly, when a full ICE implementation begins its
-        ICE processing, as described in <xref target="RFC8445" />, Section
-        6.1, it MUST set a timer, and its duration SHOULD be
-        equal to the agent's connectivity check transaction timeout.
+        In order to avoid the problem described in this specification, this
+        section updates <xref target="RFC8445" />. It defines a new timer, Tpac,
+        and defines new procedures associated with the timer for full ICE implementations.
       </t>
       <t>
+        A full ICE implementation starts timer Tpac once it has sent its set of local candidates
+        to the remote peer, as described in Section 5 of <xref target="RFC8445" 
+        pageno="false" format="default"/>.
+      </t>
+      <t>
+        The timeout value of timer Tpac SHOULD be set to the timeout value of an ICE connectivity
+        check transaction associated with the ICE session.
         This timeout value is chosen to roughly coincide with the maximum
         possible duration of ICE connectivity checks from the remote peer,
         which, if successful, could create peer-reflexive candidates. Because
-        the ICE agent doesn't know the exact number of candidate pairs and pacing
-        interval in use by the remote side, this timeout value is simply a
-        guess, albeit an educated one. Regardless, for this particular problem,
-        the desired benefits will be realized as long as the agent waits
-        some reasonable amount of time.
+        the ICE agent does not know the exact number of candidate pairs and pacing
+        interval in use by the peer, this timeout value is simply a
+        guess, albeit an educated one.
       </t>
       <t>
-        While the timer is running, if a checklist has no pairs left to check,
-        i.e., there are no pairs that are not in the failed state, the ICE
-        agent MUST not conclude that ICE processing has failed, and MUST wait
-        for the timer to elapse before doing so.
+        While timer Tpac is running, the ICE agent MUST NOT set the state of a
+        checklist to Failed, even if there are no more candidate pairs to check
+        in the checklist. As a result, the ICE agent will not remove data streams,
+        or set the state of the ICE session to Failed, while timer Tpac is still running.
       </t>
       <t>
-        One consequence of this behavior is that in cases where ICE should fail,
-        e.g., where both sides provide candidates with unresolvable FQDNs
-        ICE will no longer fail immediately, and only fail when the
-        aforementioned timer expires. However, because most ICE scenarios
-        require an extended period of time to determine failure, the
-        fact that some specific scenarios no longer fail fast should have
-        minimal application impact, if any.
+        While timer Tpac is running, if the ICE agent has set the state of each checklist
+        to Completed, the ICE agent can terminate the timer and set the state of the ICE session
+        to Completed, following normal ICE procedures.
+      </t>
+      <t>
+        If timer Tpac times out while the state of at least one checklist is
+        Running, the ICE agent MUST continue the ICE processing, and will later 
+        conclude the ICE processing and set the state of the ICE session to either Completed
+        or Failed, follwoing normal ICE procedurs.
       </t>
     </section>
 
