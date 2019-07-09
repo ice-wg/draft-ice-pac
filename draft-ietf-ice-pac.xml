@@ -190,10 +190,16 @@
         some reasonable amount of time.
       </t>
       <t>
-        While the timer is running, if a checklist has no pairs left to check,
-        i.e., there are no pairs that are not in the failed state, the ICE
-        agent MUST not conclude that ICE processing has failed, and MUST wait
-        for the timer to elapse before doing so.
+        While the timer is running, the ICE agent MUST NOT set the state of
+        a checklist to Failed, even if the checklist has no pairs left to check.
+        As a result, the ICE agent will not remove any data streams, or set the state 
+        of the ICE session to Failed, while the timer is till running, allowing
+        received peer-reflexive candidates to be tested. 
+      </t>
+      <t>
+        If the timer times out while the state of at least one checklist is
+        Running, the ICE agent MUST continue the ICE processing, and will eventually 
+        conclude the ICE processing following normal ICE procedures.
       </t>
       <t>
         One consequence of this behavior is that in cases where ICE should fail,
