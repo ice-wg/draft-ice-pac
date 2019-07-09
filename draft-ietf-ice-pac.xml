@@ -174,10 +174,13 @@
       <t>
         In order to avoid the problem raised by this document, the ICE agent
         needs to wait enough time to allow peer-reflexive candidates to be
-        discovered. Accordingly, when a full ICE implementation begins its
-        ICE processing, as described in <xref target="RFC8445" />, Section
-        6.1, it MUST set a timer, and its duration SHOULD be
-        equal to the agent's connectivity check transaction timeout.
+        discovered. Accordingly, a full ICE implementation SHOULD start a timer
+        once it has received the remote candidate information 
+        and sent at least one local candidate, 
+        as described in <xref target="RFC8445" />, Section 5.
+        The duration of the timer SHOULD be
+        equal to the timeout value of an ICE connectivity
+        check transaction associated with the ICE session.
       </t>
       <t>
         This timeout value is chosen to roughly coincide with the maximum
