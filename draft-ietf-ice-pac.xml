@@ -176,8 +176,8 @@
         needs to wait enough time to allow peer-reflexive candidates to be
         discovered. Accordingly, when a full ICE implementation begins its
         ICE processing, as described in <xref target="RFC8445" />, Section
-        6.1, it MUST set a timer, and its duration MUST be sufficient to allow
-        all peer-reflexive candidates to be discovered before firing.
+        6.1, it MUST set a timer to enforce a minimum amount of time for ICE
+        to run.
       </t>
       <t>
         The RECOMMENDED duration for the timer is equal to the agent's
