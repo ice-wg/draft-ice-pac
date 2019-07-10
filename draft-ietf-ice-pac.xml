@@ -193,13 +193,13 @@
         While the timer is running, the ICE agent MUST NOT set the state of
         a checklist to Failed, even if the checklist has no pairs left to check.
         As a result, the ICE agent will not remove any data streams or set the
-        state of the ICE session to Failed as long as the timer is active.
+        state of the ICE session to Failed as long as the timer is running.
       </t>
       <t>
         When the timer eventually elapses, the ICE agent MUST resume typical
         ICE processing, including setting any checklists containing only Failed
         pairs to the Failed state, as usual, and handling any consequences as
-        indicated in <xref target="RFC8445" />, Section 8.1.2. Naturally, if 
+        indicated in <xref target="RFC8445" />, Section 8.1.2. Naturally, if
         there are no such checklists, no action is necessary.
       </t>
       <t>
