@@ -184,16 +184,13 @@
         receive ICE connectivity checks. This occurs when the agent has
         sent the values needed to perform connectivity checks
         (e.g., the Username Fragment and Password denoted in
-        <xref target="RFC8445" />, Section 5.3) along with at least one ICE
-        candidate, and has received some indication that the remote side is
-        about to start connectivity checks, typically the values
-        needed for connectivity checks mentioned above, although receipt of an
-        ICE candidate is not required.
+        <xref target="RFC8445" />, Section 5.3)
+        and has received some indication that the remote side is
+        about to start connectivity checks, typically via receipt of the values
+        mentioned above; note that receipt of an ICE candidate is not required.
         This ensures that the timer is started at approximately
         the same time the remote peer begins checking the ICE candidates it
-        receives. Note that if the ICE agent does not send any ICE candidates to
-        the remote side, the timer is not started, and ICE processing proceeds
-        as usual.
+        receives or later discovers.
       </t>
       <t>
         The timeout value mentioned above is chosen to roughly coincide with the maximum
