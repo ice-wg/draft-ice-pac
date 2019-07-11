@@ -180,13 +180,13 @@
         equal to the agent's connectivity check transaction timeout.
       </t>
       <t>
-        Specifically, the ICE agent will start its timer once it expects to
-        receive ICE connectivity checks. This occurs when the agent has
+        Specifically, the ICE agent will start its timer once it believes
+        ICE connectivity checks are starting. This occurs when the agent has
         sent the values needed to perform connectivity checks
         (e.g., the Username Fragment and Password denoted in
         <xref target="RFC8445" />, Section 5.3)
         and has received some indication that the remote side is
-        about to start connectivity checks, typically via receipt of the values
+        ready to start connectivity checks, typically via receipt of the values
         mentioned above; note that receipt of an ICE candidate is not required.
         This ensures that the timer is started at approximately
         the same time the remote peer begins checking the ICE candidates it
