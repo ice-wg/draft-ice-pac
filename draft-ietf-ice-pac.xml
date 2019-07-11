@@ -210,10 +210,13 @@
         specification does not define a minimum duration for ICE processing
         prior to nomination of a candidate pair, but in order to select the
         best candidate pair, ICE needs to run for enough time in order to allow
-        peer-reflexive candidates to be discovered and checked. Accordingly,
-        the controlling ICE agent SHOULD wait a sufficient amount of time before
-        nominating candidate pairs, and it MAY use the timer described above to
-        do so.
+        peer-reflexive candidates to be discovered and checked, as noted above.
+        Accordingly, the controlling ICE agent SHOULD wait a sufficient amount
+        of time before nominating candidate pairs, and it MAY use the timer
+        described above to do so. If the agent believes it has discovered all
+        potential peer-reflexive candidates, e.g., has Valid non-relay 
+        candidate pairs on all interfaces, it SHOULD end the timer early and
+        proceed with nomination.
       </t>
     </section>
 
