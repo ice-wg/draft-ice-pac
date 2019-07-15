@@ -213,10 +213,9 @@
         peer-reflexive candidates to be discovered and checked, as noted above.
         Accordingly, the controlling ICE agent SHOULD wait a sufficient amount
         of time before nominating candidate pairs, and it MAY use the timer
-        described above to do so. If the agent believes it has discovered all
-        potential peer-reflexive candidates, e.g., has Valid non-relay 
-        candidate pairs on all interfaces, it SHOULD end the timer early and
-        proceed with nomination.
+        described above to do so. As always, the controlling ICE agent retains
+        full discretion, and MAY decide, based on its own criteria, to nominate
+        pairs prior to the timer elapsing.
       </t>
     </section>
 
