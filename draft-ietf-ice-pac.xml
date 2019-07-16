@@ -176,8 +176,8 @@
         needs to wait enough time to allow peer-reflexive candidates to be
         discovered. Accordingly, when a full ICE implementation begins its
         ICE processing, as described in <xref target="RFC8445" />, Section
-        6.1, it MUST set a timer, and its duration SHOULD be
-        equal to the agent's connectivity check transaction timeout.
+        6.1, it MUST set a timer to ensure ICE will run for a minimum amount
+        of time before determining failure.
       </t>
       <t>
         Specifically, the ICE agent will start its timer once it believes
@@ -190,20 +190,30 @@
         mentioned above; note that receipt of an ICE candidate is not required.
       </t>
       <t>
-        The timeout value mentioned above is chosen to roughly coincide with the maximum
+        The RECOMMENDED duration for the timer is equal to the agent's
+        connectivity check transaction timeout, including all retransmissions.
+        This timeout value is chosen to roughly coincide with the maximum
         possible duration of ICE connectivity checks from the remote peer,
         which, if successful, could create peer-reflexive candidates. Because
         the ICE agent doesn't know the exact number of candidate pairs and pacing
         interval in use by the remote side, this timeout value is simply a
         guess, albeit an educated one. Regardless, for this particular problem,
         the desired benefits will be realized as long as the agent waits
-        some reasonable amount of time.
+        some reasonable amount of time, and, as usual, the application is in
+        the best position to determine what is reasonable for its scenario.
       </t>
       <t>
-        While the timer is running, if a checklist has no pairs left to check,
-        i.e., there are no pairs that are not in the failed state, the ICE
-        agent MUST not conclude that ICE processing has failed, and MUST wait
-        for the timer to elapse before doing so.
+        While the timer is running, the ICE agent MUST NOT set the state of
+        a checklist to Failed, even if the checklist has no pairs left to check.
+        As a result, the ICE agent will not remove any data streams or set the
+        state of the ICE session to Failed as long as the timer is running.
+      </t>
+      <t>
+        When the timer eventually elapses, the ICE agent MUST resume typical
+        ICE processing, including setting any checklists containing only Failed
+        pairs to the Failed state, as usual, and handling any consequences as
+        indicated in <xref target="RFC8445" />, Section 8.1.2. Naturally, if
+        there are no such checklists, no action is necessary.
       </t>
       <t>
         One consequence of this behavior is that in cases where ICE should fail,
@@ -213,6 +223,19 @@
         require an extended period of time to determine failure, the
         fact that some specific scenarios no longer fail fast should have
         minimal application impact, if any.
+      </t>
+      <t>
+        Note also that the timer is potentially relevant to the ICE nomination
+        procedure described in <xref target="RFC8445" />, Section 8.1.1. That
+        specification does not define a minimum duration for ICE processing
+        prior to nomination of a candidate pair, but in order to select the
+        best candidate pair, ICE needs to run for enough time in order to allow
+        peer-reflexive candidates to be discovered and checked, as noted above.
+        Accordingly, the controlling ICE agent SHOULD wait a sufficient amount
+        of time before nominating candidate pairs, and it MAY use the timer
+        described above to do so. As always, the controlling ICE agent retains
+        full discretion, and MAY decide, based on its own criteria, to nominate
+        pairs prior to the timer elapsing.
       </t>
     </section>
 
