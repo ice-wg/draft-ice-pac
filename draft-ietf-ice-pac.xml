@@ -180,6 +180,16 @@
         of time before determining failure.
       </t>
       <t>
+        Specifically, the ICE agent will start its timer once it believes
+        ICE connectivity checks are starting. This occurs when the agent has
+        sent the values needed to perform connectivity checks
+        (e.g., the Username Fragment and Password denoted in
+        <xref target="RFC8445" />, Section 5.3)
+        and has received some indication that the remote side is
+        ready to start connectivity checks, typically via receipt of the values
+        mentioned above; note that receipt of an ICE candidate is not required.
+      </t>
+      <t>
         The RECOMMENDED duration for the timer is equal to the agent's
         connectivity check transaction timeout, including all retransmissions.
         This timeout value is chosen to roughly coincide with the maximum
