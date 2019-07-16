@@ -211,6 +211,19 @@
         fact that some specific scenarios no longer fail fast should have
         minimal application impact, if any.
       </t>
+      <t>
+        Note also that the timer is potentially relevant to the ICE nomination
+        procedure described in <xref target="RFC8445" />, Section 8.1.1. That
+        specification does not define a minimum duration for ICE processing
+        prior to nomination of a candidate pair, but in order to select the
+        best candidate pair, ICE needs to run for enough time in order to allow
+        peer-reflexive candidates to be discovered and checked, as noted above.
+        Accordingly, the controlling ICE agent SHOULD wait a sufficient amount
+        of time before nominating candidate pairs, and it MAY use the timer
+        described above to do so. As always, the controlling ICE agent retains
+        full discretion, and MAY decide, based on its own criteria, to nominate
+        pairs prior to the timer elapsing.
+      </t>
     </section>
 
     <section anchor="section.sec" title="Security Considerations">
