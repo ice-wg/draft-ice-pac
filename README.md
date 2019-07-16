@@ -2,9 +2,9 @@
 
 This is the working area for the individual Internet-Draft, "Interactive Connectivity Establishment, Patiently Awaiting Connectivity (ICE PAC)".
 
-* [Editor's Copy](https://cdh4u.github.io/draft-ice-pac/#go.draft-holmberg-ice-pac.html)
-* [Individual Draft](https://tools.ietf.org/html/draft-holmberg-ice-pac)
-* [Compare Editor's Copy to Individual Draft](https://cdh4u.github.io/draft-ice-pac/#go.draft-holmberg-ice-pac.diff)
+* [Editor's Copy](https://ice-wg.github.io/draft-ice-pac/#go.draft-ietf-ice-pac.html)
+* [Individual Draft](https://tools.ietf.org/html/draft-ietf-ice-pac)
+* [Compare Editor's Copy to Individual Draft](https://ice-wg.github.io/draft-ice-pac/#go.draft-ietf-ice-pac.diff)
 
 ## Building the Draft
 
@@ -21,4 +21,4 @@ This requires that you have the necessary software installed.  See
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/cdh4u/draft-ice-pac/blob/master/CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/ice-wg/draft-ice-pac/blob/master/CONTRIBUTING.md).
