@@ -176,10 +176,12 @@
         needs to wait enough time to allow peer-reflexive candidates to be
         discovered. Accordingly, when a full ICE implementation begins its
         ICE processing, as described in <xref target="RFC8445" />, Section
-        6.1, it MUST set a timer, and its duration SHOULD be
-        equal to the agent's connectivity check transaction timeout.
+        6.1, it MUST set a timer to ensure ICE will run for a minimum amount
+        of time before determining failure.
       </t>
       <t>
+        The RECOMMENDED duration for the timer is equal to the agent's
+        connectivity check transaction timeout, including all retransmissions.
         This timeout value is chosen to roughly coincide with the maximum
         possible duration of ICE connectivity checks from the remote peer,
         which, if successful, could create peer-reflexive candidates. Because
@@ -187,7 +189,8 @@
         interval in use by the remote side, this timeout value is simply a
         guess, albeit an educated one. Regardless, for this particular problem,
         the desired benefits will be realized as long as the agent waits
-        some reasonable amount of time.
+        some reasonable amount of time, and, as usual, the application is in
+        the best position to determine what is reasonable for its scenario.
       </t>
       <t>
         While the timer is running, the ICE agent MUST NOT set the state of
