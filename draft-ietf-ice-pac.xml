@@ -188,9 +188,6 @@
         and has received some indication that the remote side is
         ready to start connectivity checks, typically via receipt of the values
         mentioned above; note that receipt of an ICE candidate is not required.
-        This ensures that the timer is started at approximately
-        the same time the remote peer begins checking the ICE candidates it
-        receives or later discovers.
       </t>
       <t>
         The timeout value mentioned above is chosen to roughly coincide with the maximum
