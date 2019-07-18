@@ -47,7 +47,7 @@
     <keyword>Candidate</keyword>
     <abstract>
       <t>
-        During the process of creating a peer-to-peer connection,
+        During the process of creating a peer-to-peer connectivity,
         ICE agents can encounter situations where they have
         no candidate pairs to check, and, as a result, conclude that
         ICE processing has failed. However, because additional
