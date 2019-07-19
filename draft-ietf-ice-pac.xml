@@ -187,7 +187,8 @@
         <xref target="RFC8445" />, Section 5.3)
         and has received some indication that the remote side is
         ready to start connectivity checks, typically via receipt of the values
-        mentioned above; note that receipt of an ICE candidate is not required.
+        mentioned above. Note that the ICE agent will start the timer even if it
+        has not yet sent or received any ICE candidates.
       </t>
       <t>
         The RECOMMENDED duration for the timer is equal to the agent's
