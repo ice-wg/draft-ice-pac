@@ -142,8 +142,7 @@
             For example, candidates may use an address family that the peer
             agent does not support, (e.g., a host candidate with an IPv6
             address in a NAT64 scenario), or may not be usable for some other
-            reason (e.g., a candidate that contains a FQDN that fails to
-            resolve).
+            reason.
           </t>
           <t>
             In these scenarios, when the candidates are discarded, the
@@ -217,7 +216,7 @@
       </t>
       <t>
         One consequence of this behavior is that in cases where ICE should fail,
-        e.g., where both sides provide candidates with unresolvable FQDNs
+        e.g., where both sides provide candidates with unsupported address families
         ICE will no longer fail immediately, and only fail when the
         aforementioned timer expires. However, because most ICE scenarios
         require an extended period of time to determine failure, the
