@@ -216,7 +216,7 @@
       </t>
       <t>
         One consequence of this behavior is that in cases where ICE should fail,
-        e.g., where both sides provide candidates with unsupported address families
+        e.g., where both sides provide candidates with unsupported address families,
         ICE will no longer fail immediately, and only fail when the
         aforementioned timer expires. However, because most ICE scenarios
         require an extended period of time to determine failure, the
