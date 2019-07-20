@@ -188,7 +188,7 @@
         and has received some indication that the remote side is
         ready to start connectivity checks, typically via receipt of the values
         mentioned above. Note that the agent will start the timer even if it
-        has not yet sent or received any ICE candidates.
+        has not sent or received any ICE candidates.
       </t>
       <t>
         The RECOMMENDED duration for the timer is equal to the agent's
