@@ -66,9 +66,8 @@
         for Network Address Translator (NAT) traversal for UDP-based communication.
       </t>
       <t>
-        Typically, when using ICE, endpoints will exchange ICE candidates,
-        form a list of candidate pairs, and then test each candidate pair,
-        by sending connectivity checks using the candidate transport addresses, to see
+        When using ICE, endpoints will typically exchange ICE candidates,
+        form a list of candidate pairs, and then test each candidate pair to see
         if connectivity can be established. If the test for a given pair fails,
         it is marked accordingly, and if all pairs have failed, the overall
         ICE process is considered to have failed.
