@@ -69,9 +69,9 @@
         Typically, when using ICE, endpoints will exchange candidate addresses,
         form a list of candidate pairs, and then test each candidate pair to see
         if connectivity can be established. If the test for a given pair fails,
-        it is marked accordingly, and if all pairs have failed, the associated
-        checklist is considered to have failed. Once one or more checklists have
-        failed, the ICE agent might consider the ICE process to have failed.
+        it is it is marked accordingly, and if all pairs associated with one or 
+        more check lists have failed the ICE agent might consider the ICE process
+        to have failed.
       </t>
       <t>
         During the process of connectivity checks, additional candidates may
