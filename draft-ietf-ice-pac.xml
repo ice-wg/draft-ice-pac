@@ -70,7 +70,7 @@
         form a list of candidate pairs, and then test each candidate pair to see
         if connectivity can be established. If the test for a given pair fails,
         it is marked accordingly, and if all pairs have failed, the overall
-        ICE process is considered to have failed.
+        ICE process typically is considered to have failed.
       </t>
       <t>
         During the process of connectivity checks, additional candidates may
