@@ -238,6 +238,32 @@
         pairs prior to the timer elapsing.
       </t>
     </section>
+    
+    <section title="Update to Trickle ICE">
+      <t>
+        Trickle ICE <xref target="I-D.ietf-ice-trickle">
+        considers a similar problem, namely whether an ICE agent should allow
+        a checklist to enter the Failed state if more candidates might
+        still be provided by the remote peer. The solution, specified in 
+        <xref target="I-D.ietf-ice-trickle">, Section 8, is to
+        wait until an end-of-candidates indication has been received
+        before determining ICE failure.
+      </t>
+      <t>
+        However, the end-of-candidates indication may not include the
+        discovery of peer-reflexive candidates, and so the solution
+        proposed by this document MUST still be used even when 
+        the ICE agent is using Trickle ICE.
+      </t>
+      <t>
+        Note also that sending an end-of-candidates indication is only a 
+        SHOULD-strength requirement, which means that ICE agents will need
+        to implement an backup mechanism to decide when all candidates
+        have been received, typically a timer. Accordingly, ICE agents
+        MAY use the timer mechanism described in this document to 
+        also serve as an end-of-candidates fallback.
+      </t>
+    </section>
 
     <section anchor="section.sec" title="Security Considerations">
       <t>
