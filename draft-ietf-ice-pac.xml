@@ -66,11 +66,11 @@
         for Network Address Translator (NAT) traversal for UDP-based communication.
       </t>
       <t>
-        Typically, when using ICE, endpoints will exchange candidate addresses,
+        When using ICE, endpoints will typically exchange ICE candidates,
         form a list of candidate pairs, and then test each candidate pair to see
         if connectivity can be established. If the test for a given pair fails,
         it is marked accordingly, and if all pairs have failed, the overall
-        ICE process is considered to have failed.
+        ICE process typically is considered to have failed.
       </t>
       <t>
         During the process of connectivity checks, additional candidates may
@@ -142,8 +142,7 @@
             For example, candidates may use an address family that the peer
             agent does not support, (e.g., a host candidate with an IPv6
             address in a NAT64 scenario), or may not be usable for some other
-            reason (e.g., a candidate that contains a FQDN that fails to
-            resolve).
+            reason.
           </t>
           <t>
             In these scenarios, when the candidates are discarded, the
@@ -188,7 +187,8 @@
         <xref target="RFC8445" />, Section 5.3)
         and has received some indication that the remote side is
         ready to start connectivity checks, typically via receipt of the values
-        mentioned above; note that receipt of an ICE candidate is not required.
+        mentioned above. Note that the agent will start the timer even if it
+        has not sent or received any ICE candidates.
       </t>
       <t>
         The RECOMMENDED duration for the timer is equal to the agent's
@@ -218,9 +218,9 @@
       </t>
       <t>
         One consequence of this behavior is that in cases where ICE should fail,
-        e.g., where both sides provide candidates with unresolvable FQDNs
-        ICE will no longer fail immediately, and only fail when
-        the PAC timer expires. However, because most ICE scenarios
+        e.g., where both sides provide candidates with unsupported address families,
+        ICE will no longer fail immediately, and only fail when the
+        PAC timer expires. However, because most ICE scenarios
         require an extended period of time to determine failure, the
         fact that some specific scenarios no longer fail fast should have
         minimal application impact, if any.
