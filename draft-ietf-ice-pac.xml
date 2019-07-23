@@ -241,11 +241,15 @@
 
     <section title="Update to RFC XXXX">
       <t>
-        Trickle ICE <xref target="I-D.ietf-ice-trickle">
+        [RFC EDITOR NOTE: Please replace RFC XXXX with the RFC number of
+         draft-ietf-ice-trickle once it has been published.]
+      </t>
+      <t>
+        Trickle ICE <xref target="I-D.ietf-ice-trickle" />
         considers a similar problem, namely whether an ICE agent should allow
         a checklist to enter the Failed state if more candidates might
         still be provided by the remote peer. The solution, specified in
-        <xref target="I-D.ietf-ice-trickle">, Section 8, is to
+        <xref target="I-D.ietf-ice-trickle" />, Section 8, is to
         wait until an end-of-candidates indication has been received
         before determining ICE failure.
       </t>
@@ -287,6 +291,7 @@
       <?rfc include="reference.RFC.2119"?>
       <?rfc include="reference.RFC.8174"?>
       <?rfc include="reference.RFC.8445"?>
+      <?rfc include='reference.I-D.ietf-ice-trickle'?>
     </references>
   </back>
 </rfc>
