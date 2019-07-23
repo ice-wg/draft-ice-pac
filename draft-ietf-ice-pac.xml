@@ -175,8 +175,9 @@
         needs to wait enough time to allow peer-reflexive candidates to be
         discovered. Accordingly, when a full ICE implementation begins its
         ICE processing, as described in <xref target="RFC8445" />, Section
-        6.1, it MUST set a timer to ensure ICE will run for a minimum amount
-        of time before determining failure.
+        6.1, it MUST set a timer, henceforth known as the PAC timer, to 
+        ensure ICE will run for a minimum amount of time before determining
+        failure.
       </t>
       <t>
         Specifically, the ICE agent will start its timer once it believes
@@ -219,21 +220,21 @@
         One consequence of this behavior is that in cases where ICE should fail,
         e.g., where both sides provide candidates with unsupported address families,
         ICE will no longer fail immediately, and only fail when the
-        aforementioned timer expires. However, because most ICE scenarios
+        PAC timer expires. However, because most ICE scenarios
         require an extended period of time to determine failure, the
         fact that some specific scenarios no longer fail fast should have
         minimal application impact, if any.
       </t>
       <t>
-        Note also that the timer is potentially relevant to the ICE nomination
+        Note also that the PAC timer is potentially relevant to the ICE nomination
         procedure described in <xref target="RFC8445" />, Section 8.1.1. That
         specification does not define a minimum duration for ICE processing
         prior to nomination of a candidate pair, but in order to select the
         best candidate pair, ICE needs to run for enough time in order to allow
         peer-reflexive candidates to be discovered and checked, as noted above.
         Accordingly, the controlling ICE agent SHOULD wait a sufficient amount
-        of time before nominating candidate pairs, and it MAY use the timer
-        described above to do so. As always, the controlling ICE agent retains
+        of time before nominating candidate pairs, and it MAY use the PAC timer
+        to do so. As always, the controlling ICE agent retains
         full discretion, and MAY decide, based on its own criteria, to nominate
         pairs prior to the timer elapsing.
       </t>
