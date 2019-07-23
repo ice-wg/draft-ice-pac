@@ -240,6 +240,36 @@
       </t>
     </section>
 
+    <section title="Update to RFC XXXX">
+      <t>
+        [RFC EDITOR NOTE: Please replace RFC XXXX with the RFC number of
+         draft-ietf-ice-trickle once it has been published.]
+      </t>
+      <t>
+        Trickle ICE <xref target="I-D.ietf-ice-trickle" />
+        considers a similar problem, namely whether an ICE agent should allow
+        a checklist to enter the Failed state if more candidates might
+        still be provided by the remote peer. The solution, specified in
+        <xref target="I-D.ietf-ice-trickle" />, Section 8, is to
+        wait until an end-of-candidates indication has been received
+        before determining ICE failure.
+      </t>
+      <t>
+        However, for the same reasons described above,
+        the ICE agent may discover peer-reflexive candidates after it has
+        received the end-of-candidates indication, and so the solution
+        proposed by this document MUST still be used even when
+        the ICE agent is using Trickle ICE.
+      </t>
+      <t>
+        Note also that sending an end-of-candidates indication is only a
+        SHOULD-strength requirement, which means that ICE agents will need
+        to implement an backup mechanism to decide when all candidates
+        have been received, typically a timer. Accordingly, ICE agents
+        MAY use the PAC timer to also serve as an end-of-candidates fallback.
+      </t>
+    </section>
+
     <section anchor="section.sec" title="Security Considerations">
       <t>
         The security considerations for ICE are defined in <xref target="RFC8445" pageno="false" format="default"/>.
@@ -262,6 +292,7 @@
       <?rfc include="reference.RFC.2119"?>
       <?rfc include="reference.RFC.8174"?>
       <?rfc include="reference.RFC.8445"?>
+      <?rfc include='reference.I-D.ietf-ice-trickle'?>
     </references>
   </back>
 </rfc>
