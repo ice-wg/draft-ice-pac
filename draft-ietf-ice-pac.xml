@@ -60,7 +60,7 @@
       <t>
         [RFC EDITOR NOTE: Please replace RFC XXXX with the RFC number of
         draft-ietf-ice-trickle once it has been published. Please also
-        add the published RFC number to the updates attribute of the rfc tar.]
+        indicate that this specification updates RFC XXXX.]
       </t>
     </abstract>
   </front>
