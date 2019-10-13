@@ -54,7 +54,13 @@
         candidate pairs can be discovered during ICE processing,
         declaring failure at this point may be premature. This
         document discusses when these situations can occur and
-        proposes a way to avoid premature failure.
+        proposes a way to avoid premature failure. This document
+        updates RFC 8445 and RFC XXXX.
+      </t>
+      <t>
+        [RFC EDITOR NOTE: Please replace RFC XXXX with the RFC number of
+        draft-ietf-ice-trickle once it has been published. Please also
+        add the published RFC number to the updates attribute of the rfc tar.]
       </t>
     </abstract>
   </front>
