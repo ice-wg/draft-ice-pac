@@ -197,8 +197,10 @@
         has not sent or received any ICE candidates.
       </t>
       <t>
-        The RECOMMENDED duration for the timer is equal to the agent's
+        The RECOMMENDED duration for the PAC timer is equal to the agent's
         connectivity check transaction timeout, including all retransmissions.
+        When using default values for RTO and Rc, this amounts to 39.5 seconds,
+        as explained in <xref target="RFC5389" />, Section 7.2.1.
         This timeout value is chosen to roughly coincide with the maximum
         possible duration of ICE connectivity checks from the remote peer,
         which, if successful, could create peer-reflexive candidates. Because
