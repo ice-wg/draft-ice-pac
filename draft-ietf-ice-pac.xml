@@ -293,6 +293,10 @@
     </section>
 
     <section anchor="sec-acks" title="Acknowledgements" toc="default">
+      <t>
+        Roman Shpount, Nils Ohlmeier and Peter Thatcher provided lots of useful input and
+        comments.
+      </t>
     </section>
   </middle>
   <back>
