@@ -39,7 +39,7 @@
       </address>
     </author>
 
-    <date year="2019"/>
+    <date year="2020"/>
     <area>Transport</area>
     <workgroup>ICE Working Group</workgroup>
     <keyword>ICE</keyword>
@@ -302,6 +302,7 @@
   <back>
     <references title="Normative References">
       <?rfc include="reference.RFC.2119"?>
+      <?rfc include="reference.RFC.5389"?>
       <?rfc include="reference.RFC.8174"?>
       <?rfc include="reference.RFC.8445"?>
       <?rfc include='reference.I-D.ietf-ice-trickle'?>
