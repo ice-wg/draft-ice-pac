@@ -54,8 +54,9 @@
         candidate pairs can be discovered during ICE processing,
         declaring failure at this point may be premature. This
         document discusses when these situations can occur and
-        proposes a way to avoid premature failure. This document
-        updates RFC 8445 and RFC XXXX.
+        updates RFC8445 and RFC XXXX by requiring that an ICE agent
+        wait a minimum amount of time before declaring ICE failure, 
+        even if there are no candidate pairs left to check.
       </t>
       <t>
         [RFC EDITOR NOTE: Please replace RFC XXXX with the RFC number of
@@ -128,7 +129,7 @@
         </t>
         <section title="No Candidates From Peer">
           <t>
-            It is entirely legal for an ICE agent to provide zero candidates of
+            Per RFC XXXX, an ICE agent could provide zero candidates of
             its own. If the agent somehow knows that the remote endpoint is
             directly reachable, gathering local candidates is unnecessary and
             will only cause delays; the peer agent can discover the
@@ -212,17 +213,19 @@
         the best position to determine what is reasonable for its scenario.
       </t>
       <t>
-        While the timer is running, the ICE agent MUST NOT set the state of
-        a checklist to Failed, even if the checklist has no pairs left to check.
-        As a result, the ICE agent will not remove any data streams or set the
-        state of the ICE session to Failed as long as the timer is running.
+        While the timer is still running, the ICE agent MUST NOT update a checklist state
+        from Running to Failed, even if there are no pairs left in the checklist to check.
+        As a result, the ICE agent will not remove any data streams or set the state of the
+        ICE session to Failed as long as the timer is running. As a result, the ICE agent will
+        not remove any data streams or set the state of the ICE session to Failed as long as
+        the timer is running.
       </t>
       <t>
         When the timer eventually elapses, the ICE agent MUST resume typical
-        ICE processing, including setting any checklists containing only Failed
-        pairs to the Failed state, as usual, and handling any consequences as
-        indicated in <xref target="RFC8445" />, Section 8.1.2. Naturally, if
-        there are no such checklists, no action is necessary.
+        ICE processing, including setting the state of a checklist to Failed if there
+        are no pairs left to check, and handling any consequences as indicated
+        in <xref target="RFC8445" />, Section 8.1.2.  Naturally, if there are no
+        such checklists, no action is necessary.
       </t>
       <t>
         One consequence of this behavior is that in cases where ICE should fail,
@@ -244,7 +247,7 @@
         of time before nominating candidate pairs, and it MAY use the PAC timer
         to do so. As always, the controlling ICE agent retains
         full discretion, and MAY decide, based on its own criteria, to nominate
-        pairs prior to the timer elapsing.
+        pairs prior to the PAC timer elapsing.
       </t>
     </section>
 
@@ -272,7 +275,7 @@
       <t>
         Note also that sending an end-of-candidates indication is only a
         SHOULD-strength requirement, which means that ICE agents will need
-        to implement an backup mechanism to decide when all candidates
+        to implement a backup mechanism to decide when all candidates
         have been received, typically a timer. Accordingly, ICE agents
         MAY use the PAC timer to also serve as an end-of-candidates fallback.
       </t>
