@@ -54,8 +54,10 @@
         candidate pairs can be discovered during ICE processing,
         declaring failure at this point may be premature. This
         document discusses when these situations can occur and
-        proposes a way to avoid premature failure. This document
-        updates RFC 8445 and RFC XXXX.
+        updates RFC8445 and RFC XXXX by requiring that an ICE agent
+        wait a minimum amount of time before declaring ICE failure, 
+        even if there are no candidate pairs left".proposes a way
+        to avoid premature failure.
       </t>
       <t>
         [RFC EDITOR NOTE: Please replace RFC XXXX with the RFC number of
@@ -128,7 +130,7 @@
         </t>
         <section title="No Candidates From Peer">
           <t>
-            Per  <xref target="RFC8445"></xref>, an ICE agent could provide zero candidates of
+            Per RFC XXXX, an ICE agent could provide zero candidates of
             its own. If the agent somehow knows that the remote endpoint is
             directly reachable, gathering local candidates is unnecessary and
             will only cause delays; the peer agent can discover the
