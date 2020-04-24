@@ -212,10 +212,12 @@
         the best position to determine what is reasonable for its scenario.
       </t>
       <t>
-        While the timer is running, the ICE agent MUST NOT set the state of
-        a checklist to Failed, even if the checklist has no pairs left to check.
-        As a result, the ICE agent will not remove any data streams or set the
-        state of the ICE session to Failed as long as the timer is running.
+        While the timer is still running, the ICE agent MUST NOT update a checklist state
+        from Running to Failed, even if there are no pairs left in the checklist to check.
+        As a result, the ICE agent will not remove any data streams or set the state of the
+        ICE session to Failed as long as the timer is running. As a result, the ICE agent will
+        not remove any data streams or set the state of the ICE session to Failed as long as
+        the timer is running.
       </t>
       <t>
         When the timer eventually elapses, the ICE agent MUST resume typical
