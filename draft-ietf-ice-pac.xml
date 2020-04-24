@@ -128,7 +128,7 @@
         </t>
         <section title="No Candidates From Peer">
           <t>
-            It is entirely legal for an ICE agent to provide zero candidates of
+            Per  <xref target="RFC8445"></xref>, an ICE agent could provide zero candidates of
             its own. If the agent somehow knows that the remote endpoint is
             directly reachable, gathering local candidates is unnecessary and
             will only cause delays; the peer agent can discover the
@@ -274,7 +274,7 @@
       <t>
         Note also that sending an end-of-candidates indication is only a
         SHOULD-strength requirement, which means that ICE agents will need
-        to implement an backup mechanism to decide when all candidates
+        to implement a backup mechanism to decide when all candidates
         have been received, typically a timer. Accordingly, ICE agents
         MAY use the PAC timer to also serve as an end-of-candidates fallback.
       </t>
