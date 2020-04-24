@@ -56,7 +56,7 @@
         document discusses when these situations can occur and
         updates RFC8445 and RFC XXXX by requiring that an ICE agent
         wait a minimum amount of time before declaring ICE failure, 
-        even if there are no candidate pairs left.
+        even if there are no candidate pairs left to check.
       </t>
       <t>
         [RFC EDITOR NOTE: Please replace RFC XXXX with the RFC number of
