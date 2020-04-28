@@ -84,11 +84,11 @@
         be created as a result of successful inbound checks from the remote
         peer. Such candidates are referred to as peer-reflexive candidates,
         and once discovered, will be used to form new candidate pairs which will
-        be tested like any other. However, there is an inherent race condition
+        be tested like any other. However, there is an inherent problem
         here; if, before learning about any peer-reflexive candidates, an
         endpoint runs out of candidate pairs to check, either because it has
         none, or it considers them all to have failed, it will prematurely
-        declare failure and terminate ICE processing. This race condition can
+        declare failure and terminate ICE processing. This problem can
         occur in many common situations.
       </t>
       <t>
@@ -129,7 +129,7 @@
         </t>
         <section title="No Candidates From Peer">
           <t>
-            Per RFC XXXX, an ICE agent could provide zero candidates of
+            Per RFC XXXX, an ICE agent might provide zero candidates of
             its own. If the agent somehow knows that the remote endpoint is
             directly reachable, gathering local candidates is unnecessary and
             will only cause delays; the peer agent can discover the
@@ -216,14 +216,12 @@
         While the timer is still running, the ICE agent MUST NOT update a checklist state
         from Running to Failed, even if there are no pairs left in the checklist to check.
         As a result, the ICE agent will not remove any data streams or set the state of the
-        ICE session to Failed as long as the timer is running. As a result, the ICE agent will
-        not remove any data streams or set the state of the ICE session to Failed as long as
-        the timer is running.
+        ICE session to Failed as long as the timer is running.
       </t>
       <t>
         When the timer eventually elapses, the ICE agent MUST resume typical
-        ICE processing, including setting the state of a checklist to Failed if there
-        are no pairs left to check, and handling any consequences as indicated
+        ICE processing, including setting the state of a checklist to Failed if they
+        hace no pairs left to check, and handling any consequences as indicated
         in <xref target="RFC8445" />, Section 8.1.2.  Naturally, if there are no
         such checklists, no action is necessary.
       </t>
