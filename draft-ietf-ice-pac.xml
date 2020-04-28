@@ -129,7 +129,7 @@
         </t>
         <section title="No Candidates From Peer">
           <t>
-            Per RFC XXXX, an ICE agent might provide zero candidates of
+            Per RFC XXXX, an ICE agent can provide zero candidates of
             its own. If the agent somehow knows that the remote endpoint is
             directly reachable, gathering local candidates is unnecessary and
             will only cause delays; the peer agent can discover the
@@ -220,8 +220,8 @@
       </t>
       <t>
         When the timer eventually elapses, the ICE agent MUST resume typical
-        ICE processing, including setting the state of a checklist to Failed if they
-        hace no pairs left to check, and handling any consequences as indicated
+        ICE processing, including setting the state of any checklists to Failed if they
+        have no pairs left to check, and handling any consequences as indicated
         in <xref target="RFC8445" />, Section 8.1.2.  Naturally, if there are no
         such checklists, no action is necessary.
       </t>
